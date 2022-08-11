@@ -16,6 +16,12 @@ class Tags extends React.Component {
     };
   };
 
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.initialTags) !== JSON.stringify(this.props.initialTags)) {
+      this.setState({ tags: [...this.props.initialTags], text: " " });
+    }
+  }
+
   showLastTag = () => {
     this.setState(state =>
       ({
